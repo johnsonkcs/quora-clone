@@ -1,0 +1,12 @@
+<h2>Sign up for an account today!</h2>
+<% if @user && !@user.errors.empty? %>
+  <% @user.errors.full_messages.each do |x| %>
+    <p><%= x%></p>
+  <%end%>
+<%end%>
+<form method=post action=/signup>
+    <input type=text placeholder="Enter Your Username" name="user[username]"><br>
+    <input type=text placeholder="Enter Your Email Here" name="user[email]"><br>
+    <input type=password placeholder="Enter Your Password Here" name="user[password]"><br>
+    <input type=submit value="Sign Up"><br>
+</form>

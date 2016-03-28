@@ -1,2 +1,10 @@
 <h1>Hello World</h1>
 <p>See Me in views/static/index.html.erb</p>
+
+<%if logged_in?%>
+    <p>You're logged in as <b><%=@current_user.username%><b></p>
+
+    <form action="/logout" method="post">
+      <input type="submit" value="Logout">
+    </form>
+    <%end%>
