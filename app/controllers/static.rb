@@ -17,6 +17,7 @@ end
 
 get '/user_profile' do 
 	@user = current_user
+    @answers = Answer.where(user_id: @user.id)
 	erb :'static/user_profile'
 end
 

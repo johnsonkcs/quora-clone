@@ -3,7 +3,9 @@
 class Question < ActiveRecord::Base
 
 	belongs_to :user
-    has_many :answer
+    has_many :answers
+
+    #tried has_many :answer works also, duno why, reference code is like that, but oh wells.
 
 	validates_presence_of :title, message: " Title Cannot Be Blank"
 	validates_presence_of :body, message: "Content Cannot Be Blank"

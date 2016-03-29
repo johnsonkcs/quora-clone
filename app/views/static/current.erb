@@ -15,6 +15,29 @@
       <td><%= @question.title %></td>
       <td><%= @question.body %></td>
     </tr>
+
+</table>
+
+
+<table border="1">
+  <tr>
+    <th>Answers</th>
+  </tr>
+
+  <% if @answers.empty? %>  <!-- If answer is NOTHING  -->
+  <tr>
+  <td><p>There are no answers posted yet!</p></td>
+  </tr>
+
+  <% else %>  <!-- If answer got VALUE -->
+    <% @answers.each do |answer| %>
+
+    <tr>
+    <td><p><%= answer.text %></p></td>
+    </tr>
+
+    <% end %>
+<% end %>
 </table>
 
     <br>
@@ -33,3 +56,32 @@
     <input type="hidden" name="question[body]" ></textarea>
     <button type="submit">Delete</button>
     </form>
+
+<!-- #ANSWERS -->
+
+<form method="post" action="/answers/<%=@question.id%>">
+
+ <textarea placeholder="Enter Answer Here" name="answer[text]" rows="5" cols="30" ></textarea>
+ <input type="submit" value="Post">
+</form>
+
+
+<h1>Answers</h1>
+<% if @answers.empty? %>  <!-- If answer is NOTHING  -->
+ <p>There are no answers posted yet!</p>
+<% else %>  <!-- If answer got VALUE -->
+<table border="1">
+  <tr>
+    <th>Answers</th>
+  </tr>
+  <% @answers.each do |answer| %>
+  <tr>
+    <td><textarea readonly><%= answer.text %></textarea></td>
+  </tr>
+  <% end %>
+<% end %>
+
+
+
+
+
