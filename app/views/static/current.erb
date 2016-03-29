@@ -25,4 +25,11 @@
 
      <a href="/questions/<%=@question.id%>/edit"> Edit Question</a>
 
-   
+     <br>
+
+    <form method="post" action="/questions/<%=@question.id%>"> 
+    <input type="hidden" name="_method" value="delete">
+    <input type="hidden" name="question[title]"><br>
+    <input type="hidden" name="question[body]" ></textarea>
+    <button type="submit">Delete</button>
+    </form>

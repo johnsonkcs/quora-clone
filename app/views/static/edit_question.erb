@@ -21,6 +21,18 @@
 
     <br>
 
+    <form method="post" action="/questions/<%=@question.id%>"> 
+    <input type="hidden" name="_method" value="delete">
+    <input type="hidden" name="question[title]"><br>
+    <input type="hidden" name="question[body]" ></textarea>
+    <button type="submit">Delete</button>
+    </form>
+
+    <br>
+
     <a href="/single_question"> Ask New Question</a>
 
     <br>
+
+     <br>
+
