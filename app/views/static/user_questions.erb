@@ -1,0 +1,19 @@
+<h1>All Your Questions!</h1>
+
+<h2> You are Logged In As: <%= @user.username %></h2>
+
+<table border="1">
+  <tr>
+    <th>No</th>
+    <th>Title</th>
+    <th>Subject</th>
+  </tr>
+
+  <% @user.questions.each do |question| %>
+    <tr>
+      <td><%= question.id %></td>
+      <td><%= question.title %></td>
+      <td><%= question.body %></td>
+    </tr>
+  <% end %>
+</table>

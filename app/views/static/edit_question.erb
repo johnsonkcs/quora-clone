@@ -1,0 +1,26 @@
+<h1>Edit This Question!</h1>
+
+<h2> You are Logged In As: <%= @user.username %></h2>
+<a href="/user_profile"> Your Profile </a>
+
+
+<% if @question && !@question.errors.empty? %>
+  <% @question.errors.full_messages.each do |e| %>
+    <p><%= e[5..-1] %></p>
+  <% end %>
+<% end %>
+
+<h2>Edit Fields Below And Click Edit To Update This Question</h2>
+
+<form action="/questions/<%= @question.id %>" method="post">
+  <input type='hidden' name="_method" value="put">
+  <input type="text" placeholder="<%= @question.title %>" name="question[title]"><br>
+  <textarea name="question[body]" rows="5" cols="30"><%= @question.body %></textarea>
+  <input type="submit" value="Update">
+</form>
+
+    <br>
+
+    <a href="/single_question"> Ask New Question</a>
+
+    <br>

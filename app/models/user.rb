@@ -2,6 +2,9 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
 
+    has_many :questions
+    has_many :answers
+
 	has_secure_password  #with this, it automatically refers to password_digest excrypted password, can just call password. tested, works
 
 	validates_presence_of :username, message: "Username is required"

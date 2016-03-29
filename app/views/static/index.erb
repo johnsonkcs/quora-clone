@@ -3,8 +3,39 @@
 
 <%if logged_in?%>
     <p>You're logged in as <b><%=@current_user.username%><b></p>
+    <a href="/user_profile"> Your Profile </a>
 
     <form action="/logout" method="post">
       <input type="submit" value="Logout">
     </form>
-    <%end%>
+<%else%>
+    <p> WELCOME! Please Sign Up or Log In</p>
+    <a href="/signup"> Sign Up! </a>
+    <a href="/login"> Log In! </a>
+<%end%>
+
+    <br>
+
+    <a href="/single_question"> Ask New Question</a>
+
+    <br>
+
+    <h2> Top Questions </h2>
+    <table border="1">
+    <tr>
+        <th> No: </th>
+        <th> Title </th>
+        <th> Description </th>
+        <th> Posted By </th>
+    </tr>
+   
+ 
+    <% @questions.each do |question| %>
+    <tr>
+        <td><p><%= question.id %></a></p></td>
+        <td><p><%= question.title %></p></td>
+        <td><p><%= question.body %></p></td>
+        <td><p><%= question.user.username %></p></td>
+    </tr>
+    <% end %>
+    </table>

@@ -26,7 +26,7 @@ post '/logout' do
 
 	if logged_in?
 		session[:user_id] = nil
-		erb :"static/login"
+		erb :"static/index"
 	end
 end
 

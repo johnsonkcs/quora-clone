@@ -1,0 +1,35 @@
+<%if !logged_in?%>
+
+<h1> Sorry! Please Log In Or Sign Up To Continue! </h1>
+
+<a href="/signup"> Sign Up! </a>
+
+<br>
+
+<a href="/login"> Log In! </a>
+
+
+<% else %>
+
+
+
+
+<h2>Ask Your Question Here</h2>
+
+
+
+<% if @question && !@question.errors.empty? %>
+  <% @question.errors.full_messages.each do |e| %>
+    <p><%= e[5..-1] %></p>
+  <%end%>
+<%end%>
+
+<br>
+
+<form method="post" action="/questions">
+    <input type="text" placeholder="Enter Question Title" name="question[title]"><br>
+    <textarea placeholder="Enter Question Description Here" name="question[body]" rows="5" cols="30"></textarea><br>
+    <input type="submit" value="Ask!"><br>
+</form>
+
+<% end %>

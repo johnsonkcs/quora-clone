@@ -1,0 +1,28 @@
+<h1>Your Current Question!</h1>
+
+<h2> You are Logged In As: <%= @user.username %></h2>
+ <a href="/user_profile"> Your Profile </a>
+
+<table border="1">
+  <tr>
+    <th>No</th>
+    <th>Title</th>
+    <th>Subject</th>
+  </tr>
+
+    <tr>
+      <td><%= @question.id %></td>
+      <td><%= @question.title %></td>
+      <td><%= @question.body %></td>
+    </tr>
+</table>
+
+    <br>
+
+    <a href="/single_question"> Ask New Question</a>
+
+    <br>
+
+     <a href="/questions/<%=@question.id%>/edit"> Edit Question</a>
+
+   
