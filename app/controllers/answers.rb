@@ -65,6 +65,15 @@ post '/answers/:id' do
 	# end
 end
 
+
+delete '/answers/:answer_id' do
+	answer = Answer.find_by(id: params[:answer_id])
+	answer.destroy
+	# redirect to '/'
+	# erb :'static/user_profile'
+	redirect '/user_profile'
+end
+
 # get '/answers/:id' do
 #   @user = current_user
 #   # @question = Question.find_by(id: params[:id])

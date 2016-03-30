@@ -62,6 +62,7 @@
         <th> Answer </th>
         <th> Question </th>
         <th> Description </th>
+        <th> Delete Answer? </th>
       </tr>
 
   <% @answers.each do |answer| %>
@@ -69,6 +70,15 @@
       <td><%= answer.text %></td>
       <td><%= answer.question.title %></td>
       <td><%= answer.question.body %></td>
+
+      <td>
+    <form method="post" action="/answers/<%=answer.id%>"> 
+    <input type="hidden" name="_method" value="delete">
+    <input type="hidden" name="answer[text]" ></textarea>
+    <button type="submit">Delete Answer</button>
+     </td>
+
+    </form>
     </tr>
   <% end %>
 </table>
