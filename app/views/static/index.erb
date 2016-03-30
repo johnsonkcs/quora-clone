@@ -20,20 +20,22 @@
 
     <br>
     <h2> Top Questions </h2>
-    <table border="1">
+    <table border="1" width="100%">
     <tr>
-        <th> ID </th>
+        <th> Number </th>
+        <th> Ques ID </th>
         <th> Title </th>
         <th> Description </th>
         <th> Posted By </th>
         <th> Vote Controls </th>
         <th> Votes Data </th>
-        <th> Answers </th>
+        <!-- <th> Answers </th> -->
     </tr>
    
  
-    <% @questions.each do |question| %>
+    <% @questions.each.with_index do |question, index| %>
     <tr>
+        <td><p><%= index + 1 %></a></p></td>
         <td><p><%= question.id %></a></p></td>
         <td><p><a href="/questions/<%=question.id%>"><%= question.title %></a></p></td>
         <td><p><%= question.body %></p></td>
@@ -55,12 +57,19 @@
         
 
         </p></td>
+        </tr>
 
-        <td><p>
+
+
+
+        <tr align="center">
+        <td colspan="7"><p>
             
             <!-- ANSWERS COLUMN -->
             <% if question.answers.count == 0 %>
-        No answers yet, would you want answer it?
+        No answers yet, would you want answer it? <br>
+        <br>
+    Kindly click on the question name on the FAR TOP LEFT of this question to post your answer<br> 
     <% else %>
         <% question_answers = question.answers %>
         <% question_answers.each.with_index do |answer, index| %>
@@ -81,6 +90,7 @@
     Total answer upvote(s): <%= answer.answer_votes.where(answer_vote_count: 1).count %><br>
     Total answer downvote(s): <%= answer.answer_votes.where(answer_vote_count: -1).count %><br>
     <br>
+    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     <br>
 
         <% end %> <!--Ends answer do each -->
