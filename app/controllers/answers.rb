@@ -17,7 +17,7 @@ post '/answers/:id' do
 		# @user = current_user
         # @question = Question.find_by(id: params[:id])
         @answer = Answer.new(params[:answer].merge(user_id: @user.id, question_id: @question.id))
-		# @answer = @user.questions.answers.new(params[:answer])
+		# @answer = @user.@question.answers.new(params[:answer])
 		if @answer.save
 			erb :'static/current'
 			# redirect to '/answers/questions/#{@question.id}'

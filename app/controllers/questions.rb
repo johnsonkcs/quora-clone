@@ -18,7 +18,8 @@ post '/questions' do
 	if @question.save
 		# redirect to '/static/#{@question.id}'
 		# redirect to '/users/questions'
-		erb :'static/user_profile'
+		# erb :'static/user_profile'
+		redirect '/user_profile'
 	else
 		erb :"static/single_question"
 	end
@@ -55,5 +56,6 @@ delete '/questions/:id' do
 	@question = Question.find_by(id: params[:id])
 	@question.destroy
 	# redirect to '/'
-	erb :'static/user_profile'
+	# erb :'static/user_profile'
+	redirect '/user_profile'
 end

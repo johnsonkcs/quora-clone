@@ -18,6 +18,7 @@ end
 get '/user_profile' do 
 	@user = current_user
     @answers = Answer.where(user_id: @user.id)
+    # redirect '/user_profile'
 	erb :'static/user_profile'
 end
 
@@ -25,3 +26,9 @@ get '/users/:id' do
 	erb :'static/user_profile'
 end
 
+# get '/current' do
+#      @user = current_user
+#      @question = Question.find_by(id: params[:id])
+#      @answers = Answer.where(question_id: @question.id)
+#      erb :'static/current'
+#  end
