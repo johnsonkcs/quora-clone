@@ -28,13 +28,14 @@
         <th> Posted By </th>
         <th> Vote Controls </th>
         <th> Votes Data </th>
+        <th> Answers </th>
     </tr>
    
  
     <% @questions.each do |question| %>
     <tr>
         <td><p><%= question.id %></a></p></td>
-        <td><p><%= question.title %></p></td>
+        <td><p><a href="/questions/<%=question.id%>"><%= question.title %></a></p></td>
         <td><p><%= question.body %></p></td>
         <td><p><%= question.user.username %></p></td>
         <td><p>
@@ -54,6 +55,40 @@
         
 
         </p></td>
+
+        <td><p>
+            
+            <!-- ANSWERS COLUMN -->
+            <% if question.answers.count == 0 %>
+        No answers yet, would you want answer it?
+    <% else %>
+        <% question_answers = question.answers %>
+        <% question_answers.each.with_index do |answer, index| %>
+            <%= index + 1 %><%= ". " %><%= answer.text %><br>
+
+    <!--The form for up voting on answers -->
+    <form action='/answers/<%= answer.id %>/upvote' method="POST">
+        <input type="submit" value="Answer Upvote"></form>
+    <!--The form for down voting on answers -->
+    <form action='/answers/<%= answer.id %>/downvote' method="POST">
+        <input type="submit" value="Answer Downvote"></form>
+    <!--The form for resetting answers -->
+    <form action='/answers/<%= answer.id %>/reset' method="POST">
+        <input type="submit" value="Reset Answer Vote"></form>
+
+    <!--To find the total amount of votes by type-->    
+    Total answer vote(s): <%= answer.answer_votes.count %><br>
+    Total answer upvote(s): <%= answer.answer_votes.where(answer_vote_count: 1).count %><br>
+    Total answer downvote(s): <%= answer.answer_votes.where(answer_vote_count: -1).count %><br>
+    <br>
+    <br>
+
+        <% end %> <!--Ends answer do each -->
+    <% end %>    <!--Ends If else answer present or not-->
+
+        </p></td>
+
+
 
     </tr>
     <% end %>
