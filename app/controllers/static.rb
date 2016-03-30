@@ -26,9 +26,10 @@ get '/users/:id' do
 	erb :'static/user_profile'
 end
 
-# get '/current' do
+# get '/users/:user_id/questions/:question_id/answers/index' do
+# 	byebug
 #      @user = current_user
-#      @question = Question.find_by(id: params[:id])
+#      @question = Question.find_by(question_id: params[:question_id])
 #      @answers = Answer.where(question_id: @question.id)
 #      erb :'static/current'
 #  end

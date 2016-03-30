@@ -3,9 +3,12 @@
 <h2> You are Logged In As: <%= @user.username %></h2>
  <a href="/user_profile"> Your Profile </a>
 
+
+ <p><%= @anserror %></p>
+
 <table border="1">
   <tr>
-    <th>No</th>
+    <th>ID</th>
     <th>Title</th>
     <th>Subject</th>
   </tr>
@@ -64,6 +67,8 @@
  <textarea placeholder="Enter Answer Here" name="answer[text]" rows="5" cols="30" ></textarea>
  <input type="submit" value="Post">
 </form>
+
+<a href='/questions/<%= @question.id %>/answers/new'> Post Answer At New Page</a>
 
 
 <h1>Answers</h1>

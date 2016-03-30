@@ -2,10 +2,41 @@ enable :sessions
 # require 'sinatra'
 # require 'sinatra/flash'
 
-get '/answers/:id' do
-  erb :"static/current"
+get '/questions/:question_id/answers/new' do
+	@user = current_user
+	# byebug
+    @question = Question.find_by(id: params[:question_id])
+    # byebug
+	erb :'static/create_answer'
 end
 
+post '/questions/:question_id/answers' do
+	@user = current_user
+    @question = Question.find_by(id: params[:question_id])
+    # byebug
+    # @answers = Answer.where(question_id: @question.id)
+    @answer = Answer.new(params[:answer].merge(user_id: @user.id, question_id: @question.id))
+		# @answer = @user.@question.answers.new(params[:answer])
+		if @answer.save
+			# erb :'static/current'
+			# redirect '/users/#{@user.id}/questions/#{@question.id}/answers/index'
+			redirect '/user_profile'
+			# redirect to '/answers/questions/#{@question.id}'
+		else
+			# @anserror = "Can't Post Answer. Log In And Make Sure Answer Field Is Not Blank"
+			erb :'static/create_answer'
+			# redirect to '/static/create_answer'
+		end
+end
+
+
+
+# get '/questions/:question_id/answers/n' do
+# get '/answers/:id' do
+#   erb :"static/current"
+# end
+
+# post 'questions/:question_id/answers/' do
 post '/answers/:id' do
      @user = current_user
      @question = Question.find_by(id: params[:id])
@@ -22,7 +53,8 @@ post '/answers/:id' do
 			erb :'static/current'
 			# redirect to '/answers/questions/#{@question.id}'
 		else
-			erb :'static/index'
+			@anserror = "Can't Post Answer. Log In And Make Sure Answer Field Is Not Blank"
+			erb :'static/current'
 			# redirect to '/static/create_answer'
 		end
 	# else   # IF NOT LOGGED IN
