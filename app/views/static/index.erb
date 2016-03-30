@@ -19,7 +19,6 @@
     <a href="/single_question"> Ask New Question</a>
 
     <br>
-
     <h2> Top Questions </h2>
     <table border="1">
     <tr>
@@ -27,6 +26,8 @@
         <th> Title </th>
         <th> Description </th>
         <th> Posted By </th>
+        <th> Vote Controls </th>
+        <th> Votes Data </th>
     </tr>
    
  
@@ -36,6 +37,24 @@
         <td><p><%= question.title %></p></td>
         <td><p><%= question.body %></p></td>
         <td><p><%= question.user.username %></p></td>
+        <td><p>
+        <form action="/questions/<%= question.id %>/upvote" method="POST">
+            <input type="submit" value="upvote"></form>
+        <form action="/questions/<%= question.id %>/downvote" method="POST">
+            <input type="submit" value="downvote"></form>
+        <form action="/questions/<%= question.id %>/reset" method="POST">
+            <input type="submit" value="reset"></form>
+        </p></td>
+         <td><p>
+
+        <!--To show vote count(s) by type-->
+    Total question vote(s)  <%= question.question_votes.count %><br> 
+    Total question upvote(s) <%= question.question_votes.where(question_vote_count: 1).count %><br>
+    Total question downvote(s)  <%= question.question_votes.where(question_vote_count: -1).count %><br><br>
+        
+
+        </p></td>
+
     </tr>
     <% end %>
     </table>

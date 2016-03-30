@@ -4,6 +4,7 @@ class Question < ActiveRecord::Base
 
 	belongs_to :user
     has_many :answers
+    has_many :question_votes
 
     #tried has_many :answer works also, duno why, reference code is like that, but oh wells.
 

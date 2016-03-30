@@ -6,7 +6,6 @@ helpers SessionHelper
 get '/' do
   @user = current_user
   @questions = Question.all
-  # byebug
   erb :"static/index"
 end
 
