@@ -5,7 +5,7 @@ helpers SessionHelper
 
 get '/' do
   @user = current_user
-  @questions = Question.all
+  @questions = Question.all.order(updated_at: :desc).paginate(:page => params[:page], :per_page => 5)
   erb :"static/index"
 end
 

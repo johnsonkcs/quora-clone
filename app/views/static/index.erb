@@ -1,3 +1,4 @@
+
 <h1>Welcome To Ask Ask Ask Portal! </h1>
 <p>See Me in views/static/index.html.erb</p>
 
@@ -31,7 +32,7 @@
         <th> Votes Data </th>
         <!-- <th> Answers </th> -->
     </tr>
-   
+    <%= will_paginate @questions %>
  
     <% @questions.each.with_index do |question, index| %>
     <tr>
@@ -71,9 +72,9 @@
         <br>
     Kindly click on the question name on the FAR TOP LEFT of this question to post your answer<br> 
     <% else %>
-        <% question_answers = question.answers %>
+        <% question_answers = question.answers.order(updated_at: :desc) %>
         <% question_answers.each.with_index do |answer, index| %>
-            <%= index + 1 %><%= ". " %><%= answer.text %><br>
+            <%= " Answer " %><%= index + 1 %><%= " : " %><br><br><%= answer.text %><br><br>
 
     <!--The form for up voting on answers -->
     <form action='/answers/<%= answer.id %>/upvote' method="POST">
