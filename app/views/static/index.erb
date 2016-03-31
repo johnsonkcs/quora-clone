@@ -21,6 +21,7 @@
 
     <br>
     <h2> Top Questions </h2>
+    <div align="right"><%= will_paginate @questions %></div>
     <table border="1" width="100%">
     <tr>
         <th> Number </th>
@@ -32,7 +33,6 @@
         <th> Votes Data </th>
         <!-- <th> Answers </th> -->
     </tr>
-    <%= will_paginate @questions %>
  
     <% @questions.each.with_index do |question, index| %>
     <tr>
@@ -105,3 +105,4 @@
     </tr>
     <% end %>
     </table>
+    <div align="right"><%= will_paginate @questions %></div>>
