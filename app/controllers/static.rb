@@ -32,3 +32,4 @@ end
 #      @answers = Answer.where(question_id: @question.id)
 #      erb :'static/current'
 #  end
+

@@ -1,6 +1,9 @@
 
+
+
 <h1>Welcome To Ask Ask Ask Portal! </h1>
 <p>See Me in views/static/index.html.erb</p>
+
 
 <%if logged_in?%>
     <p>You're logged in as <b><%=@current_user.username%><b></p>
@@ -9,6 +12,8 @@
     <form action="/logout" method="post">
       <input type="submit" value="Logout">
     </form>
+
+
 <%else%>
     <p> WELCOME! Please Sign Up or Log In</p>
     <a href="/signup"> Sign Up! </a>
@@ -91,7 +96,7 @@
     Total answer upvote(s): <%= answer.answer_votes.where(answer_vote_count: 1).count %><br>
     Total answer downvote(s): <%= answer.answer_votes.where(answer_vote_count: -1).count %><br>
     <br>
-    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------^^---Answered By------
+    -------------------------------------------------------------------------------------------------------------------------------------------^^---Answered By------
     <%= answer.user.username %>
     <br>
 
@@ -105,4 +110,4 @@
     </tr>
     <% end %>
     </table>
-    <div align="right"><%= will_paginate @questions %></div>>
+    <div align="right"><%= will_paginate @questions %></div>
